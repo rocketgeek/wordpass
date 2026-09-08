@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: WordPass Random Word Passwords
+Plugin Name: WordPass
 Plugin URI:  http://devbitz.com/plugins/wordpass/
-Description: Creates random word based passwords.
-Version:     1.0.1
+Description: Creates random word-based passwords.
+Version:     1.0.2
 Author:      Chad Butler
 Author URI:  http://butlerblog.com/
 License:     GPLv2
@@ -42,9 +42,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 define( 'WORDPASS_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 
-
 add_action( 'init', 'wordpass_init' );
-
 
 /**
  * Initialize the plugin.

@@ -1,10 +1,10 @@
 ﻿=== WordPass ===
 Contributors: cbutlerjr
 Donate link: http://devbitz.com/plugins/
-Tags: password, admin, users, user, registration, security
-Requires at least: 4.0.0
-Tested up to: 5.8
-Stable tag: 1.0.1
+Tags: password, users, user, registration, security
+Requires at least: 4.6.0
+Tested up to: 7.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -62,6 +62,15 @@ The plugin uses the words in your word list to generate a random password consis
 1. Settings page.
 
 == Changelog ==
+
+= 1.0.2 =
+
+* Replace use of `mt_rand()` with `wp_rand()`.
+* Disallow direct file access in plugin files.
+* Update uninstall to not use a direct db call (use `get_sites()` instead).
+* Prefix nonglobal variables (in uninstall).
+* Better escaping of output in admin.
+* Required WP version is now 4.6.0.
 
 = 1.0.1 =
 
