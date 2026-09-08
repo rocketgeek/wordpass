@@ -106,7 +106,7 @@ class WordPass {
 
 			// Handle password case.
 			$case = ( isset( $this->options['word_case'] ) ) ? $this->options['word_case'] : 1;
-			$case = ( 4 == $case ) ? mt_rand( 1, 3 ) : $case;
+			$case = ( 4 == $case ) ? wp_rand( 1, 3 ) : $case;
 			if ( 2 == $case ) {
 				// All upper case.
 				$word = strtoupper( $root );
@@ -131,9 +131,9 @@ class WordPass {
 	 */
 	private function do_number() {
 		// Generate a range of numbers.
-		$digits = mt_rand( 1, 3 );
+		$digits = wp_rand( 1, 3 );
 		$second = ( $digits == 1 ) ? 9 : ( ( $digits == 2 ) ? 99 : 999 );
-		$number = mt_rand( 0, $second );
+		$number = wp_rand( 0, $second );
 		return array_map( 'intval', str_split( $number ) );
 	}
 
@@ -144,7 +144,7 @@ class WordPass {
 	 */
 	private function do_special() {
 		// Random selection to add a special character or not.
-		$num_chars = mt_rand( 0, 1 );
+		$num_chars = wp_rand( 0, 1 );
 		if ( $num_chars ) {
 			$special_chars = str_split( "!@#$%&*=+?" );
 			$special_array = array( 
