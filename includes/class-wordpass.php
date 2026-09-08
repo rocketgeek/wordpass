@@ -113,7 +113,7 @@ class WordPass {
 			}
 
 			// Return the word.
-			return $word;
+			return esc_html( $word );
 		}
 		return;
 	}

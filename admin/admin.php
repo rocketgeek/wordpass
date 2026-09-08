@@ -104,7 +104,7 @@ function wordpass_settings_word_list() {
 	$word_list = $wordpass->options['word_list'];
 	// The word list is an array, convert it to a comma separated string.
 	$word_list = ( is_array( $word_list ) ) ? implode( ', ', $word_list ) : $word_list;
-	echo '<textarea id="word_list" name="wordpass_options[word_list]" rows="5" class="large-text code">' . $word_list . '</textarea><br />
+	echo '<textarea id="word_list" name="wordpass_options[word_list]" rows="5" class="large-text code">' . esc_html( $word_list ) . '</textarea><br />
 		<span class="description">' . __( 'WordPass will add random numbers and randomly a special character (like !, @, #, etc.) to the selected word.', 'wordpass' ) . '</span>';
 }
 
@@ -118,12 +118,8 @@ function wordpass_settings_word_list() {
  */
 function wordpass_validate_options( $input ) {
 	$valid = array();
-	$valid['word_case'] = $input['word_case'];
-	$valid['word_list'] = preg_replace(
-		'/[^a-zA-Z,]/',
-		'',
-		$input['word_list']
-	);
+	$valid['word_case'] = intval( $input['word_case'] );
+	$valid['word_list'] = preg_replace( '/[^a-zA-Z,]/', '', sanitize_text_field( $input['word_list'] ) );
 	return $valid;
 }
 
