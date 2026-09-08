@@ -29,6 +29,10 @@ Text Domain: wordpass
 	http://www.gnu.org/licenses/gpl.html
 */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 
 /**
  * The plugin path.

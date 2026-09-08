@@ -10,6 +10,12 @@
  * @package WordPass
  * @author Chad Butler
  */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
+
 class WordPass {
 	
 	/**

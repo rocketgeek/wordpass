@@ -18,6 +18,10 @@
  * - wordpass_admin_plugin_links
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 
 /**
  * Add a menu for the options page.
