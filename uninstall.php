@@ -22,20 +22,19 @@ if ( WP_UNINSTALL_PLUGIN ) {
 	if ( is_multisite() ) {
 
 		global $wpdb;
-		$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
-		$original_blog_id = get_current_blog_id();
+		$wordpass_blog_ids = get_sites( array( 'fields' => 'ids' ) );
+		$wordpass_orig_blog_id = get_current_blog_id();
 
-		foreach ( $blog_ids as $blog_id ) {
+		foreach ( $wordpass_blog_ids as $blog_id ) {
 			switch_to_blog( $blog_id );
 			wordpass_uninstall_options(); 
 		}
-		switch_to_blog( $original_blog_id );
+		switch_to_blog( $wordpass_orig_blog_id );
 	
 	} else {
 		wordpass_uninstall_options();
 	}
 }
-
 
 /**
  * Compartmentalizes uninstall
