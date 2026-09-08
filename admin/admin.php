@@ -38,7 +38,6 @@ function wordpass_add_page() {
 	);
 }
 
-
 /**
  * Display the options page.
  *
@@ -46,8 +45,7 @@ function wordpass_add_page() {
  */
 function wordpass_render_option_page() { ?>
 	<div class="wrap">
-		<?php screen_icon(); ?>
-		<h2><?php print $GLOBALS['title']; ?></h2>
+		<h2><?php print esc_html( $GLOBALS['title'] ); ?></h2>
 		<form action="options.php" method="post"><?php 
 			settings_fields( 'wordpass_options' );
 			do_settings_sections( 'wordpass' );
@@ -55,7 +53,6 @@ function wordpass_render_option_page() { ?>
 		</form>
 	</div><?php
 }
-
 
 /**
  * Register and define the settings.
@@ -76,7 +73,6 @@ function wordpass_admin_init() {
 	add_settings_field( 'wordpass_word_list', __( 'Enter words here, separated by commas', 'wordpass' ), 'wordpass_settings_word_list', 'wordpass', 'wordpass_main' );
 }
 
-
 /**
  * Display the case selection option.
  *
@@ -88,13 +84,12 @@ function wordpass_settings_word_case() {
 	global $wordpass;
 	echo '
 	<select name="wordpass_options[word_case]">
-		<option value="1" ' . selected( $wordpass->options['word_case'], 1, false ) . '>' . __( 'All Lowercase', 'wordpass' ) . '</option>
-		<option value="2" ' . selected( $wordpass->options['word_case'], 2, false ) . '>' . __( 'All Uppercase', 'wordpass' ) . '</option>
-		<option value="3" ' . selected( $wordpass->options['word_case'], 3, false ) . '>' . __( 'First Letter Uppercase', 'wordpass' ) . '</option>
-		<option value="4" ' . selected( $wordpass->options['word_case'], 4, false ) . '>' . __( 'Random', 'wordpass' ) . '</option>
+		<option value="1" ' . selected( $wordpass->options['word_case'], 1, false ) . '>' . esc_html__( 'All Lowercase', 'wordpass' ) . '</option>
+		<option value="2" ' . selected( $wordpass->options['word_case'], 2, false ) . '>' . esc_html__( 'All Uppercase', 'wordpass' ) . '</option>
+		<option value="3" ' . selected( $wordpass->options['word_case'], 3, false ) . '>' . esc_html__( 'First Letter Uppercase', 'wordpass' ) . '</option>
+		<option value="4" ' . selected( $wordpass->options['word_case'], 4, false ) . '>' . esc_html__( 'Random', 'wordpass' ) . '</option>
 	</select>';
 }
-
 
 /**
  * Display and fill the form field.
@@ -109,9 +104,8 @@ function wordpass_settings_word_list() {
 	// The word list is an array, convert it to a comma separated string.
 	$word_list = ( is_array( $word_list ) ) ? implode( ', ', $word_list ) : $word_list;
 	echo '<textarea id="word_list" name="wordpass_options[word_list]" rows="5" class="large-text code">' . esc_html( $word_list ) . '</textarea><br />
-		<span class="description">' . __( 'WordPass will add random numbers and randomly a special character (like !, @, #, etc.) to the selected word.', 'wordpass' ) . '</span>';
+		<span class="description">' . esc_html__( 'WordPass will add random numbers and randomly a special character (like !, @, #, etc.) to the selected word.', 'wordpass' ) . '</span>';
 }
-
 
 /**
  * Validate user input (we want text only)
@@ -126,7 +120,6 @@ function wordpass_validate_options( $input ) {
 	$valid['word_list'] = preg_replace( '/[^a-zA-Z,]/', '', sanitize_text_field( $input['word_list'] ) );
 	return $valid;
 }
-
 
 /**
  * Add settings link to plugin panel.
@@ -149,6 +142,5 @@ function wordpass_admin_plugin_links( $links, $file ) {
 	}
 	return $links;
 }
-
 
 // End of file.
