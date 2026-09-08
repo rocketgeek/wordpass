@@ -3,7 +3,7 @@
 Plugin Name: WordPass Random Word Passwords
 Plugin URI:  http://devbitz.com/plugins/wordpass/
 Description: Creates random word based passwords.
-Version:     1.0
+Version:     1.0.1
 Author:      Chad Butler
 Author URI:  http://butlerblog.com/
 License:     GPLv2
